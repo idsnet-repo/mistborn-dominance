@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../domain/model.dart';
 import '../domain/dominance_engine.dart';
 import '../services/config_loader.dart';
+import 'config_page.dart';
 
 class EventLogEntry {
   final int row;
@@ -220,6 +221,23 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          actions: [
+            IconButton(
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ConfigPage()),
+                );
+                // Recargar configuración después de volver de la página de config
+                _loadConfig();
+              },
+              icon: const Icon(
+                Icons.settings,
+                color: Color(0xFFD4AF37),
+              ),
+              tooltip: 'Configuración',
+            ),
+          ],
         ),
         body: Container(
           decoration: _buildMistbornGradient(),
@@ -426,17 +444,15 @@ class _HomePageState extends State<HomePage> {
                           Icons.keyboard_arrow_up,
                           size: 24,
                         ),
-                        label: Flexible(
-                          child: Text(
-                            'Dominance Up',
-                            style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.width * 0.032,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                            overflow: TextOverflow.fade,
+                        label: Text(
+                          'Dominance Up',
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.032,
+                            fontWeight: FontWeight.bold,
                           ),
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.visible,
                         ),
                       ),
                     ),
@@ -451,17 +467,15 @@ class _HomePageState extends State<HomePage> {
                           Icons.refresh,
                           size: 24,
                         ),
-                        label: Flexible(
-                          child: Text(
-                            'Nueva Partida',
-                            style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.width * 0.032,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                            overflow: TextOverflow.fade,
+                        label: Text(
+                          'Nueva Partida',
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.032,
+                            fontWeight: FontWeight.bold,
                           ),
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.visible,
                         ),
                       ),
                     ),
