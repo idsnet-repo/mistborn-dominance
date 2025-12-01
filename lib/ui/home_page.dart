@@ -122,6 +122,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+
+
   Widget _buildStatCard(String label, String value, String suffix, IconData icon) {
     return Column(
       children: [
@@ -198,47 +200,48 @@ class _HomePageState extends State<HomePage> {
     final x = state.currentX;
     final row = state.currentRow;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            const Icon(
-              Icons.auto_awesome,
-              color: Color(0xFFD4AF37),
-              size: 28,
-            ),
-            const SizedBox(width: 8),
-            const Text(
-              'Mistborn Dominance',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Row(
+            children: [
+              Icon(
+                Icons.auto_awesome,
+                color: Color(0xFFD4AF37),
+                size: MediaQuery.of(context).size.width * 0.07,
               ),
-            ),
-          ],
+              const SizedBox(width: 8),
+              Text(
+                'Mistborn Dominance',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: MediaQuery.of(context).size.width * 0.05,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      body: Container(
-        decoration: _buildMistbornGradient(),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: SingleChildScrollView(
-            child: Column(
+        body: Container(
+          decoration: _buildMistbornGradient(),
+          child: Padding(
+            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04), // 4% del ancho
+            child: SingleChildScrollView(
+              child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               // Selector de dificultad con estilo Mistborn
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF404040).withOpacity(0.7),
+                  color: const Color(0xFF404040).withValues(alpha: 0.7),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: const Color(0xFF2F4F4F).withOpacity(0.5),
+                    color: const Color(0xFF2F4F4F).withValues(alpha: 0.5),
                     width: 1,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF8B0000).withOpacity(0.1),
+                      color: const Color(0xFF8B0000).withValues(alpha: 0.1),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -304,28 +307,28 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.025),
 
               // Estado del juego con progreso visual
               Container(
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      const Color(0xFF404040).withOpacity(0.8),
-                      const Color(0xFF2C2C2C).withOpacity(0.9),
+                      const Color(0xFF404040).withValues(alpha: 0.8),
+                      const Color(0xFF2C2C2C).withValues(alpha: 0.9),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: const Color(0xFF8B0000).withOpacity(0.3),
+                    color: const Color(0xFF8B0000).withValues(alpha: 0.3),
                     width: 2,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF8B0000).withOpacity(0.2),
+                      color: const Color(0xFF8B0000).withValues(alpha: 0.2),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -409,45 +412,55 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.025),
 
               // Botones mejorados
               Row(
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 56,
+                      height: MediaQuery.of(context).size.height * 0.07, // Altura responsiva
                       child: ElevatedButton.icon(
                         onPressed: row >= 16 ? null : _onDominanceUp,
                         icon: const Icon(
                           Icons.keyboard_arrow_up,
                           size: 24,
                         ),
-                        label: const Text(
-                          'Dominance Up',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                        label: Flexible(
+                          child: Text(
+                            'Dominance Up',
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width * 0.032,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.fade,
                           ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                   Expanded(
                     child: SizedBox(
-                      height: 56,
+                      height: MediaQuery.of(context).size.height * 0.07, // Altura responsiva
                       child: OutlinedButton.icon(
                         onPressed: _onResetGame,
                         icon: const Icon(
                           Icons.refresh,
                           size: 24,
                         ),
-                        label: const Text(
-                          'Nueva Partida',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                        label: Flexible(
+                          child: Text(
+                            'Nueva Partida',
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width * 0.032,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.fade,
                           ),
                         ),
                       ),
@@ -456,32 +469,32 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
 
               // Evento actual con estilo dramático
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      const Color(0xFF8B0000).withOpacity(0.1),
-                      const Color(0xFF2C2C2C).withOpacity(0.8),
-                      const Color(0xFF0D0D0D).withOpacity(0.9),
+                      const Color(0xFF8B0000).withValues(alpha: 0.1),
+                      const Color(0xFF2C2C2C).withValues(alpha: 0.8),
+                      const Color(0xFF0D0D0D).withValues(alpha: 0.9),
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: const Color(0xFFD4AF37).withOpacity(0.6),
+                      color: const Color(0xFFD4AF37).withValues(alpha: 0.2),
                     width: 2,
                   ),
                   boxShadow: [
                     BoxShadow(
                       color: _lastEvent != null 
-                          ? const Color(0xFF8B0000).withOpacity(0.3)
-                          : const Color(0xFF2F4F4F).withOpacity(0.2),
+                          ? const Color(0xFF8B0000).withValues(alpha: 0.3)
+                          : const Color(0xFF2F4F4F).withValues(alpha: 0.2),
                       blurRadius: 16,
                       offset: const Offset(0, 8),
                     ),
@@ -513,18 +526,18 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.015),
                     
                     // Contenido del evento
                     if (_lastEvent == null)
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(16),
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF0D0D0D).withOpacity(0.5),
+                          color: const Color(0xFF0D0D0D).withValues(alpha: 0.5),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: const Color(0xFF2F4F4F).withOpacity(0.3),
+                            color: const Color(0xFF2F4F4F).withValues(alpha: 0.3),
                             width: 1,
                           ),
                         ),
@@ -542,12 +555,12 @@ class _HomePageState extends State<HomePage> {
                     else
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(16),
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF0D0D0D).withOpacity(0.7),
+                          color: const Color(0xFF0D0D0D).withValues(alpha: 0.7),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: const Color(0xFF8B0000).withOpacity(0.4),
+                            color: const Color(0xFF8B0000).withValues(alpha: 0.4),
                             width: 1,
                           ),
                         ),
@@ -587,19 +600,18 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 12),
 
-              // Historial scrollable
+              // Historial scrollable - altura adaptativa
               Container(
-                height: 200,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF2C2C2C).withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: const Color(0xFF2F4F4F).withOpacity(0.3),
-                      width: 1,
-                    ),
+                height: MediaQuery.of(context).size.height * 0.25, // 25% de la altura de pantalla
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF2C2C2C).withValues(alpha: 0.5),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: const Color(0xFF2F4F4F).withValues(alpha: 0.3),
+                    width: 1,
                   ),
+                ),
                   child: _eventHistory.isEmpty
                       ? const Center(
                           child: Text(
@@ -621,10 +633,10 @@ class _HomePageState extends State<HomePage> {
                               margin: const EdgeInsets.only(bottom: 8),
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: const Color(0xFF404040).withOpacity(0.6),
+                                color: const Color(0xFF404040).withValues(alpha: 0.6),
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
-                                  color: const Color(0xFF8B0000).withOpacity(0.2),
+                                  color: const Color(0xFF8B0000).withValues(alpha: 0.2),
                                   width: 1,
                                 ),
                               ),
@@ -656,8 +668,8 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                 ),
-              ),
             ],
+              ),
             ),
           ),
         ),
