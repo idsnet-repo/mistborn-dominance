@@ -33,12 +33,7 @@ Una aplicación companion para el juego de mesa **Mistborn: House War** que te a
 
 ## 🚀 Instalación
 
-### Opción 1: APK Pre-compilado
-1. Descarga el APK desde [Releases](../../releases)
-2. Instala en tu dispositivo Android
-3. ¡Listo para jugar!
-
-### Opción 2: Compilar desde el código fuente
+### Compilar desde el código fuente
 
 #### **Requisitos**
 - [Flutter SDK](https://docs.flutter.dev/get-started/install) (3.0+)
@@ -48,7 +43,7 @@ Una aplicación companion para el juego de mesa **Mistborn: House War** que te a
 #### **Pasos**
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/mistborn_dominance.git
+git clone https://github.com/idsnet-repo/mistborn_dominance.git
 cd mistborn_dominance
 
 # Instalar dependencias
@@ -120,9 +115,9 @@ flutter build apk --release
 - **File Picker**: Importación de archivos JSON
 - **Wakelock Plus**: Mantiene la pantalla activa durante el juego
 
-## 🎮 Compatibilidad con Mistborn: House War
+## 🎮 Compatibilidad con Mistborn: The Deckbuilding Game
 
-Esta aplicación está diseñada como companion para **Mistborn: House War** de Crafty Games. Los eventos y mecánicas están inspirados en el juego oficial pero son completamente customizables.
+Esta aplicación está diseñada como companion para **Mistborn: The Deckbuilding Game** de Brotherwise Games. Los eventos y mecánicas están inspirados en el juego oficial pero son completamente customizables.
 
 ### 📚 **Relación con el Juego Base**
 - **Dominance Track**: Refleja la mecánica central del juego
@@ -132,12 +127,6 @@ Esta aplicación está diseñada como companion para **Mistborn: House War** de 
 ## 🤝 Contribuir
 
 ¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar la app:
-
-1. **Fork** el repositorio
-2. **Crea una rama** para tu feature (`git checkout -b feature/nueva-funcionalidad`)
-3. **Commit** tus cambios (`git commit -am 'Añadir nueva funcionalidad'`)
-4. **Push** a la rama (`git push origin feature/nueva-funcionalidad`)
-5. **Abre un Pull Request**
 
 ### 💡 **Ideas para contribuir**
 - Nuevas configuraciones de eventos
@@ -150,15 +139,6 @@ Esta aplicación está diseñada como companion para **Mistborn: House War** de 
 
 Este proyecto está licenciado bajo la [MIT License](LICENSE).
 
-## 🙏 Agradecimientos
-
-- **Brandon Sanderson** por crear el increíble universo de Mistborn
-- **Crafty Games** por Mistborn: House War
-- **La comunidad Flutter** por las herramientas y recursos
-- **Los beta testers** que ayudaron a pulir la experiencia
-
 ---
-
-**¿Problemas o sugerencias?** Abre un [issue](../../issues) y te ayudamos 🚀
 
 **¡Que disfrutes tus partidas de Mistborn con esta companion app!** ⚔️✨
