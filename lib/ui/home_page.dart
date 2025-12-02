@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../domain/model.dart';
 import '../domain/dominance_engine.dart';
 import '../services/config_loader.dart';
+import '../services/config_manager.dart';
 import 'config_page.dart';
 
 class EventLogEntry {
@@ -48,6 +49,10 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     WakelockPlus.disable();
     super.dispose();
+  }
+
+  Future<String> _getActiveConfigName() async {
+    return await ConfigManager.getActiveConfigId();
   }
 
   Future<void> _loadConfig() async {
@@ -176,7 +181,7 @@ class _HomePageState extends State<HomePage> {
           decoration: _buildMistbornGradient(),
           child: const Center(
             child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFD4AF37)),
+              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFFB300)),
             ),
           ),
         ),
@@ -208,7 +213,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Icon(
                 Icons.auto_awesome,
-                color: Color(0xFFD4AF37),
+                color: Color(0xFFFFB300),
                 size: MediaQuery.of(context).size.width * 0.07,
               ),
               const SizedBox(width: 8),
@@ -222,6 +227,31 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           actions: [
+            FutureBuilder<String>(
+              future: _getActiveConfigName(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData && snapshot.data != 'default') {
+                  return Container(
+                    margin: const EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFB71C1C).withValues(alpha: 0.3),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: const Color(0xFFFFB300), width: 1),
+                    ),
+                    child: Text(
+                      'Custom',
+                      style: TextStyle(
+                        color: const Color(0xFFFFB300),
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
             IconButton(
               onPressed: () async {
                 await Navigator.push(
@@ -233,7 +263,7 @@ class _HomePageState extends State<HomePage> {
               },
               icon: const Icon(
                 Icons.settings,
-                color: Color(0xFFD4AF37),
+                color: Color(0xFFFFB300),
               ),
               tooltip: 'Configuración',
             ),
@@ -259,7 +289,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF8B0000).withValues(alpha: 0.1),
+                      color: const Color(0xFFB71C1C).withValues(alpha: 0.1),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -272,14 +302,14 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         const Icon(
                           Icons.tune,
-                          color: Color(0xFFD4AF37),
+                          color: Color(0xFFFFB300),
                           size: 20,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           'Dificultad',
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: const Color(0xFFD4AF37),
+                            color: const Color(0xFFFFB300),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -307,7 +337,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           icon: const Icon(
                             Icons.arrow_drop_down,
-                            color: Color(0xFFD4AF37),
+                            color: Color(0xFFFFB300),
                           ),
                           items: _config!.difficulties.map((d) {
                             return DropdownMenuItem(
@@ -341,12 +371,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: const Color(0xFF8B0000).withValues(alpha: 0.3),
+                    color: const Color(0xFFB71C1C).withValues(alpha: 0.3),
                     width: 2,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF8B0000).withValues(alpha: 0.2),
+                      color: const Color(0xFFB71C1C).withValues(alpha: 0.2),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -360,14 +390,14 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         const Icon(
                           Icons.trending_up,
-                          color: Color(0xFFD4AF37),
+                          color: Color(0xFFFFB300),
                           size: 24,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           'Dominance Track',
                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: const Color(0xFFD4AF37),
+                            color: const Color(0xFFFFB300),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -394,7 +424,7 @@ class _HomePageState extends State<HomePage> {
                           valueColor: AlwaysStoppedAnimation<Color>(
                             Color.lerp(
                               const Color(0xFF2F4F4F),
-                              const Color(0xFF8B0000),
+                              const Color(0xFFB71C1C),
                               row / 16,
                             )!,
                           ),
@@ -438,21 +468,24 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.07, // Altura responsiva
-                      child: ElevatedButton.icon(
-                        onPressed: row >= 16 ? null : _onDominanceUp,
-                        icon: const Icon(
-                          Icons.keyboard_arrow_up,
-                          size: 24,
-                        ),
-                        label: Text(
-                          'Dominance Up',
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.032,
-                            fontWeight: FontWeight.bold,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        child: ElevatedButton.icon(
+                          onPressed: row >= 16 ? null : _onDominanceUp,
+                          icon: const Icon(
+                            Icons.keyboard_arrow_up,
+                            size: 24,
                           ),
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          overflow: TextOverflow.visible,
+                          label: Text(
+                            'Dominance Up',
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width * 0.032,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.visible,
+                          ),
                         ),
                       ),
                     ),
@@ -461,21 +494,24 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.07, // Altura responsiva
-                      child: OutlinedButton.icon(
-                        onPressed: _onResetGame,
-                        icon: const Icon(
-                          Icons.refresh,
-                          size: 24,
-                        ),
-                        label: Text(
-                          'Nueva Partida',
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.032,
-                            fontWeight: FontWeight.bold,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        child: OutlinedButton.icon(
+                          onPressed: _onResetGame,
+                          icon: const Icon(
+                            Icons.refresh,
+                            size: 24,
                           ),
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          overflow: TextOverflow.visible,
+                          label: Text(
+                            'Nueva Partida',
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width * 0.032,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.visible,
+                          ),
                         ),
                       ),
                     ),
@@ -492,7 +528,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      const Color(0xFF8B0000).withValues(alpha: 0.1),
+                      const Color(0xFFB71C1C).withValues(alpha: 0.1),
                       const Color(0xFF2C2C2C).withValues(alpha: 0.8),
                       const Color(0xFF0D0D0D).withValues(alpha: 0.9),
                     ],
@@ -501,13 +537,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                      color: const Color(0xFFD4AF37).withValues(alpha: 0.2),
+                      color: const Color(0xFFFFB300).withValues(alpha: 0.2),
                     width: 2,
                   ),
                   boxShadow: [
                     BoxShadow(
                       color: _lastEvent != null 
-                          ? const Color(0xFF8B0000).withValues(alpha: 0.3)
+                          ? const Color(0xFFB71C1C).withValues(alpha: 0.3)
                           : const Color(0xFF2F4F4F).withValues(alpha: 0.2),
                       blurRadius: 16,
                       offset: const Offset(0, 8),
@@ -523,7 +559,7 @@ class _HomePageState extends State<HomePage> {
                         Icon(
                           _lastEvent != null ? Icons.warning_amber : Icons.access_time,
                           color: _lastEvent != null 
-                              ? const Color(0xFF8B0000) 
+                              ? const Color(0xFFB71C1C) 
                               : const Color(0xFF2F4F4F),
                           size: 24,
                         ),
@@ -532,7 +568,7 @@ class _HomePageState extends State<HomePage> {
                           'Evento Actual',
                           style: TextStyle(
                             color: _lastEvent != null 
-                                ? const Color(0xFFD4AF37) 
+                                ? const Color(0xFFFFB300) 
                                 : const Color(0xFF2F4F4F),
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -574,7 +610,7 @@ class _HomePageState extends State<HomePage> {
                           color: const Color(0xFF0D0D0D).withValues(alpha: 0.7),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: const Color(0xFF8B0000).withValues(alpha: 0.4),
+                            color: const Color(0xFFB71C1C).withValues(alpha: 0.4),
                             width: 1,
                           ),
                         ),
@@ -599,14 +635,14 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   const Icon(
                     Icons.history,
-                    color: Color(0xFFD4AF37),
+                    color: Color(0xFFFFB300),
                     size: 20,
                   ),
                   const SizedBox(width: 8),
                   Text(
                     'Historial de Eventos',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: const Color(0xFFD4AF37),
+                      color: const Color(0xFFFFB300),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -650,7 +686,7 @@ class _HomePageState extends State<HomePage> {
                                 color: const Color(0xFF404040).withValues(alpha: 0.6),
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
-                                  color: const Color(0xFF8B0000).withValues(alpha: 0.2),
+                                  color: const Color(0xFFB71C1C).withValues(alpha: 0.2),
                                   width: 1,
                                 ),
                               ),
@@ -660,7 +696,7 @@ class _HomePageState extends State<HomePage> {
                                   Text(
                                     'Fila ${entry.row} (X=${entry.x})',
                                     style: const TextStyle(
-                                      color: Color(0xFFD4AF37),
+                                      color: Color(0xFFFFB300),
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
                                     ),

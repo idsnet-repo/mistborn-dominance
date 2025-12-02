@@ -92,9 +92,21 @@ class ConfigManager {
   }
 
   static Future<String> saveConfig(String name, String content) async {
-    // Validar que el JSON sea válido
-    final jsonData = json.decode(content);
-    GameConfig.fromJson(jsonData); // Esto lanzará excepción si no es válido
+    try {
+      // Validar que el JSON sea válido
+      final jsonData = json.decode(content);
+      final config = GameConfig.fromJson(jsonData);
+      
+      // Validar que tenga al menos una dificultad y eventos
+      if (config.difficulties.isEmpty) {
+        throw Exception('La configuración debe tener al menos una dificultad');
+      }
+      if (config.events.isEmpty) {
+        throw Exception('La configuración debe tener al menos un evento');
+      }
+    } catch (e) {
+      throw Exception('Archivo JSON inválido: ${e.toString()}');
+    }
     
     final configDir = await _getConfigsDirectory();
     final configId = DateTime.now().millisecondsSinceEpoch.toString();

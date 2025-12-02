@@ -162,13 +162,37 @@ class _ConfigPageState extends State<ConfigPage> {
 
   void _showError(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: Colors.red),
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(Icons.error, color: Colors.white),
+            const SizedBox(width: 8),
+            Expanded(child: Text(message)),
+          ],
+        ),
+        backgroundColor: const Color(0xFFB71C1C),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      ),
     );
   }
 
   void _showSuccess(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: Colors.green),
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(Icons.check_circle, color: Colors.white),
+            const SizedBox(width: 8),
+            Expanded(child: Text(message)),
+          ],
+        ),
+        backgroundColor: const Color(0xFF2E7D32),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      ),
     );
   }
 
@@ -177,9 +201,9 @@ class _ConfigPageState extends State<ConfigPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Configuración de Eventos'),
-        backgroundColor: const Color(0xFF2C2C2C),
+        backgroundColor: const Color(0xFF424242),
       ),
-      backgroundColor: const Color(0xFF1A1A1A),
+      backgroundColor: const Color(0xFF121212),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : Padding(
@@ -195,7 +219,7 @@ class _ConfigPageState extends State<ConfigPage> {
                       icon: const Icon(Icons.file_upload),
                       label: const Text('Importar Configuración'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF8B0000),
+                        backgroundColor: const Color(0xFFB71C1C),
                       ),
                     ),
                   ),
@@ -205,7 +229,7 @@ class _ConfigPageState extends State<ConfigPage> {
                   const Text(
                     'Configuraciones Disponibles',
                     style: TextStyle(
-                      color: Color(0xFFD4AF37),
+                      color: Color(0xFFFFB300),
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -221,17 +245,17 @@ class _ConfigPageState extends State<ConfigPage> {
                         final isActive = config.id == _activeConfigId;
                         
                         return Card(
-                          color: const Color(0xFF2C2C2C),
+                          color: const Color(0xFF424242),
                           margin: const EdgeInsets.only(bottom: 8),
                           child: ListTile(
                             leading: Icon(
                               isActive ? Icons.check_circle : Icons.radio_button_unchecked,
-                              color: isActive ? const Color(0xFFD4AF37) : Colors.grey,
+                              color: isActive ? const Color(0xFFFFB300) : const Color(0xFF78909C),
                             ),
                             title: Text(
                               config.name,
                               style: TextStyle(
-                                color: isActive ? const Color(0xFFD4AF37) : Colors.white,
+                                color: isActive ? const Color(0xFFFFB300) : Colors.white,
                                 fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
                               ),
                             ),
