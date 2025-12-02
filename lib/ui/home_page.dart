@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
   DifficultyConfig? _selectedDifficulty;
   GameState? _gameState;
   EventConfig? _lastEvent;
+  bool _xIncreased = false; // Rastrea si X se incrementó en el último evento
 
   List<EventLogEntry> _eventHistory = [];
 
@@ -79,26 +80,31 @@ class _HomePageState extends State<HomePage> {
       _gameState = GameState(difficulty: newDiff);
       _lastEvent = null;
       _eventHistory = [];
+      _xIncreased = false;
     });
   }
 
   void _onDominanceUp() {
     if (_engine == null || _gameState == null) return;
 
+    final oldX = _gameState!.currentX ?? 0;
+    
     final result = _engine!.nextEvent(_gameState!);
     final newState = result['state'] as GameState;
     final event = result['event'] as EventConfig?;
 
-    final x = newState.currentX ?? 0;
+    final newX = newState.currentX ?? 0;
     final row = newState.currentRow;
+    final xIncreased = newX > oldX;
 
     setState(() {
       _gameState = newState;
       _lastEvent = event;
+      _xIncreased = xIncreased; // Nuevo campo para rastrear si X aumentó
 
       if (event != null) {
         _eventHistory = List<EventLogEntry>.from(_eventHistory)
-          ..add(EventLogEntry(row: row, x: x, event: event));
+          ..add(EventLogEntry(row: row, x: newX, event: event));
       }
     });
   }
@@ -110,6 +116,7 @@ class _HomePageState extends State<HomePage> {
       _gameState = GameState(difficulty: _selectedDifficulty!);
       _lastEvent = null;
       _eventHistory = [];
+      _xIncreased = false;
     });
   }
 
@@ -579,7 +586,60 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.015),
                     
                     // Contenido del evento
-                    if (_lastEvent == null)
+                    if (row >= 16)
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFB71C1C).withValues(alpha: 0.2),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: const Color(0xFFB71C1C),
+                            width: 2,
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            const Icon(
+                              Icons.dangerous,
+                              color: Color(0xFFB71C1C),
+                              size: 32,
+                            ),
+                            const SizedBox(height: 12),
+                            const Text(
+                              '🏴‍☠️ JUEGO TERMINADO 🏴‍☠️',
+                              style: TextStyle(
+                                color: Color(0xFFB71C1C),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'El Lord Legislador ha triunfado.\n\nLos héroes han sido derrotados y Luthadel ha caído bajo su dominio absoluto.',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                height: 1.6,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 12),
+                            const Text(
+                              'Pulsa "Nueva Partida" para intentarlo de nuevo.',
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 14,
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      )
+                    else if (_lastEvent == null)
                       Container(
                         width: double.infinity,
                         padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
@@ -614,14 +674,44 @@ class _HomePageState extends State<HomePage> {
                             width: 1,
                           ),
                         ),
-                        child: Text(
-                          _lastEvent!.text,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            height: 1.6,
-                            fontWeight: FontWeight.w500,
-                          ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Información del incremento de X (solo cuando X se incremente)
+                            if (_xIncreased)
+                              Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.all(8),
+                                margin: const EdgeInsets.only(bottom: 12),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFFFB300).withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(
+                                    color: const Color(0xFFFFB300).withValues(alpha: 0.3),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Text(
+                                  '📈 X se ha incrementado a ${x ?? 0}!',
+                                  style: const TextStyle(
+                                    color: Color(0xFFFFB300),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            // Texto del evento
+                            Text(
+                              _lastEvent!.text,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                height: 1.6,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                   ],

@@ -22,8 +22,7 @@ class DifficultyConfig {
 
 class EventConfig {
   final String id;
-  final String difficulty;
-  final int row;
+  final int? dominance; // null o 0 = genérico, valor específico = solo para ese X
   final String text;
   final List<String> tags;
   final String? source;
@@ -32,8 +31,7 @@ class EventConfig {
 
   EventConfig({
     required this.id,
-    required this.difficulty,
-    required this.row,
+    this.dominance,
     required this.text,
     this.tags = const [],
     this.source,
@@ -44,8 +42,7 @@ class EventConfig {
   factory EventConfig.fromJson(Map<String, dynamic> json) {
     return EventConfig(
       id: json['id'],
-      difficulty: json['difficulty'],
-      row: json['row'],
+      dominance: json['dominance'] as int?,
       text: json['text'],
       tags: (json['tags'] as List<dynamic>? ?? [])
           .map((e) => e as String)
@@ -59,14 +56,18 @@ class EventConfig {
   EventConfig withX(int x) {
     return EventConfig(
       id: id,
-      difficulty: difficulty,
-      row: row,
+      dominance: dominance,
       text: text.replaceAll('{X}', x.toString()),
       tags: tags,
       source: source,
       weight: weight,
       maxTimesPerGame: maxTimesPerGame,
     );
+  }
+
+  /// Determina si este evento puede aparecer para el valor X dado
+  bool isAvailableForX(int x) {
+    return dominance == null || dominance == 0 || dominance == x;
   }
 }
 

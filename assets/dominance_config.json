@@ -1,608 +1,739 @@
 {
-  "difficulties": [
-    { "id": "normal", "name": "Normal", "xCurve": [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4] }
-  ],
   "events": [
-  {
-    "id": "normal_r01_e01_damage_all_1",
-    "difficulty": "normal",
-    "row": 1,
-    "text": "Cada jugador recibe 1 de daño.",
-    "tags": ["damage", "mild"],
-    "source": "intro_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r01_e02_discard_1",
-    "difficulty": "normal",
-    "row": 1,
-    "text": "El Lord Legislador exige tributo: cada jugador descarta 1 carta de su mano.",
-    "tags": ["discard", "hand"],
-    "source": "intro_like",
-    "weight": 1
-  },
-  {
-    "id": "normal_r01_e03_lock_one_card",
-    "difficulty": "normal",
-    "row": 1,
-    "text": "Elige 1 carta de tu mano. No podrás jugarla este turno.",
-    "tags": ["tempo", "restriction"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r01_e04_tap_in_play",
-    "difficulty": "normal",
-    "row": 1,
-    "text": "Los Obligadores vigilan la ciudad: agota (tapa) 1 carta que tengas en juego.",
-    "tags": ["tap", "board_control"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r02_e01_damage_or_discard",
-    "difficulty": "normal",
-    "row": 2,
-    "text": "Cada jugador recibe 1 de daño o descarta 1 carta de su mano.",
-    "tags": ["damage", "discard", "choice"],
-    "source": "intro_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r02_e02_discard_highest_cost",
-    "difficulty": "normal",
-    "row": 2,
-    "text": "Si tienes 3 o más cartas en mano, descarta la carta de mayor costo.",
-    "tags": ["discard", "hand"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r02_e03_tap_played_card",
-    "difficulty": "normal",
-    "row": 2,
-    "text": "Elige 1 carta que hayas jugado este turno. Trátala como agotada (tapada) hasta tu próximo turno.",
-    "tags": ["tap", "tempo"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r02_e04_mill_top_1",
-    "difficulty": "normal",
-    "row": 2,
-    "text": "Descarta la carta superior de tu mazo.",
-    "tags": ["mill", "deck"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r03_e01_damage_x_all",
-    "difficulty": "normal",
-    "row": 3,
-    "text": "Cada jugador recibe {X} de daño.",
-    "tags": ["damage"],
-    "source": "standard_a_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r03_e02_discard_top_each",
-    "difficulty": "normal",
-    "row": 3,
-    "text": "Cada jugador descarta la carta superior de su mazo.",
-    "tags": ["mill", "deck"],
-    "source": "standard_a_like",
-    "weight": 1
-  },
-  {
-    "id": "normal_r03_e03_cant_burn_metal_next_turn",
-    "difficulty": "normal",
-    "row": 3,
-    "text": "Elige 1 metal que hayas quemado este turno. No podrás quemar ese metal en tu próximo turno.",
-    "tags": ["metals", "restriction"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r03_e04_look2_keep1",
-    "difficulty": "normal",
-    "row": 3,
-    "text": "Mira las 2 primeras cartas de tu mazo. Pon 1 en tu mano y descarta la otra.",
-    "tags": ["deck", "selection"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r04_e01_damage_x_or_discard",
-    "difficulty": "normal",
-    "row": 4,
-    "text": "Cada jugador recibe {X} de daño o descarta 2 cartas de su mano.",
-    "tags": ["damage", "discard", "choice"],
-    "source": "standard_a_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r04_e02_flare_one_metal_if_any",
-    "difficulty": "normal",
-    "row": 4,
-    "text": "Si quemaste algún metal este turno, debes avivar (flarear) 1 de esos metales.",
-    "tags": ["metals", "flare"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r04_e03_tap_all_in_play_one_player",
-    "difficulty": "normal",
-    "row": 4,
-    "text": "El jugador con más cartas en juego debe agotar (tapar) todas sus cartas en juego.",
-    "tags": ["tap", "board_control"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r04_e04_each_discards_played_this_turn",
-    "difficulty": "normal",
-    "row": 4,
-    "text": "Cada jugador elige 1 carta que haya jugado este turno y la descarta.",
-    "tags": ["discard", "tempo"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r05_e01_damage_x_all",
-    "difficulty": "normal",
-    "row": 5,
-    "text": "Cada jugador recibe {X} de daño.",
-    "tags": ["damage"],
-    "source": "standard_a_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r05_e02_discard_2_or_damage",
-    "difficulty": "normal",
-    "row": 5,
-    "text": "Cada jugador descarta 2 cartas de su mano o recibe {X} de daño.",
-    "tags": ["discard", "damage", "choice"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r05_e03_mill_top_2",
-    "difficulty": "normal",
-    "row": 5,
-    "text": "Descarta las 2 cartas superiores de tu mazo.",
-    "tags": ["mill", "deck"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r05_e04_tap_two_in_play",
-    "difficulty": "normal",
-    "row": 5,
-    "text": "Los Inquisidores patrullan Luthadel: agota (tapa) hasta 2 cartas que tengas en juego.",
-    "tags": ["tap", "board_control"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r06_e01_damage_x_lowest_hp",
-    "difficulty": "normal",
-    "row": 6,
-    "text": "El jugador con menos vida recibe {X} de daño.",
-    "tags": ["damage", "targeted"],
-    "source": "custom",
-    "weight": 2
-  },
-  {
-    "id": "normal_r06_e02_flare_all_metals_this_turn",
-    "difficulty": "normal",
-    "row": 6,
-    "text": "Debes avivar (flarear) todos los metales que hayas quemado este turno.",
-    "tags": ["metals", "flare"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r06_e03_damage_per_metal_burned",
-    "difficulty": "normal",
-    "row": 6,
-    "text": "Recibes 1 de daño por cada metal distinto que hayas quemado este turno (máximo {X} de daño).",
-    "tags": ["metals", "damage"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r06_e04_each_discards_played_low_cost",
-    "difficulty": "normal",
-    "row": 6,
-    "text": "Cada jugador elige 1 carta de costo bajo que haya jugado este turno y la descarta.",
-    "tags": ["discard", "tempo"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r07_e01_damage_x_all_then_draw1",
-    "difficulty": "normal",
-    "row": 7,
-    "text": "Cada jugador recibe {X} de daño. Luego, cada jugador roba 1 carta.",
-    "tags": ["damage", "draw"],
-    "source": "custom",
-    "weight": 2
-  },
-  {
-    "id": "normal_r07_e02_lock_one_metal_next_turn",
-    "difficulty": "normal",
-    "row": 7,
-    "text": "Elige 1 metal de tu reserva. No podrás quemar ese metal en tu próximo turno.",
-    "tags": ["metals", "restriction"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r07_e03_sacrifice_in_play_or_damage",
-    "difficulty": "normal",
-    "row": 7,
-    "text": "Elige: descarta 1 carta que tengas en juego o recibe {X} de daño.",
-    "tags": ["board_control", "damage", "choice"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r07_e04_mist_confusion_reorder_top3",
-    "difficulty": "normal",
-    "row": 7,
-    "text": "Las brumas confunden tus pasos: mira las 3 primeras cartas de tu mazo, descarta 1 y devuelve las otras 2 en el orden que quieras.",
-    "tags": ["deck", "selection"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r08_e01_damage_x_all_discard1",
-    "difficulty": "normal",
-    "row": 8,
-    "text": "Cada jugador recibe {X} de daño y descarta 1 carta de su mano.",
-    "tags": ["damage", "discard"],
-    "source": "standard_a_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r08_e02_tap_all_in_play_highest_hp",
-    "difficulty": "normal",
-    "row": 8,
-    "text": "El jugador con más vida debe agotar (tapar) todas las cartas que tenga en juego.",
-    "tags": ["tap", "board_control"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r08_e03_skaa_riots_all_mill_2",
-    "difficulty": "normal",
-    "row": 8,
-    "text": "Disturbios entre los skaa: cada jugador descarta las 2 cartas superiores de su mazo.",
-    "tags": ["mill", "deck"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r08_e04_lose_metal_this_game_soft",
-    "difficulty": "normal",
-    "row": 8,
-    "text": "Elige 1 metal que hayas quemado en esta ronda. No podrás quemar ese metal durante los próximos 2 turnos.",
-    "tags": ["metals", "restriction"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r09_e01_damage_x_all_and_mill1",
-    "difficulty": "normal",
-    "row": 9,
-    "text": "Cada jugador recibe {X} de daño y descarta la carta superior de su mazo.",
-    "tags": ["damage", "mill"],
-    "source": "standard_a_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r09_e02_discard2_or_damage_x",
-    "difficulty": "normal",
-    "row": 9,
-    "text": "Cada jugador descarta 2 cartas de su mano o recibe {X} de daño.",
-    "tags": ["discard", "damage", "choice"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r09_e03_tap_all_metals_in_play",
-    "difficulty": "normal",
-    "row": 9,
-    "text": "Las reservas metálicas se agotan: agota (tapa) todas las cartas relacionadas con metales que tengas en juego.",
-    "tags": ["tap", "metals", "board_control"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r09_e04_look3_keep1_mill2",
-    "difficulty": "normal",
-    "row": 9,
-    "text": "Mira las 3 primeras cartas de tu mazo. Pon 1 en tu mano y descarta las otras 2.",
-    "tags": ["deck", "selection", "mill"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r10_e01_damage_x_lowest_hp_and_tap",
-    "difficulty": "normal",
-    "row": 10,
-    "text": "El jugador con menos vida recibe {X} de daño y debe agotar (tapar) 1 carta que tenga en juego.",
-    "tags": ["damage", "tap", "targeted"],
-    "source": "custom",
-    "weight": 2
-  },
-  {
-    "id": "normal_r10_e02_flare_all_metals_this_turn_hard",
-    "difficulty": "normal",
-    "row": 10,
-    "text": "Debes avivar (flarear) todos los metales que hayas quemado en este turno.",
-    "tags": ["metals", "flare"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r10_e03_damage_per_card_in_play",
-    "difficulty": "normal",
-    "row": 10,
-    "text": "Recibes 1 de daño por cada 2 cartas que tengas en juego (redondea hacia arriba), hasta un máximo de {X} de daño.",
-    "tags": ["damage", "board_control"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r10_e04_each_discards_played_this_turn",
-    "difficulty": "normal",
-    "row": 10,
-    "text": "Cada jugador elige 1 carta que haya jugado este turno y la descarta.",
-    "tags": ["discard", "tempo"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r11_e01_damage_x_all_and_discard1",
-    "difficulty": "normal",
-    "row": 11,
-    "text": "Cada jugador recibe {X} de daño y descarta 1 carta de su mano.",
-    "tags": ["damage", "discard"],
-    "source": "standard_a_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r11_e02_skaa_spies_reveal_hand",
-    "difficulty": "normal",
-    "row": 11,
-    "text": "Espías skaa revelan tus planes: muestra tu mano y descarta 1 carta de tu elección.",
-    "tags": ["discard", "info"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r11_e03_lock_metal_for_two_turns",
-    "difficulty": "normal",
-    "row": 11,
-    "text": "Elige 1 metal que hayas quemado en este turno. No podrás quemar ese metal durante tus próximos 2 turnos.",
-    "tags": ["metals", "restriction"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r11_e04_mist_storm_shuffle_discard_into_deck",
-    "difficulty": "normal",
-    "row": 11,
-    "text": "Tormenta de brumas: baraja tu pila de descarte y ponla debajo de tu mazo.",
-    "tags": ["deck", "discard_pile"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r12_e01_damage_x_all_strong",
-    "difficulty": "normal",
-    "row": 12,
-    "text": "El poder del Lord Legislador crece: cada jugador recibe {X} de daño.",
-    "tags": ["damage"],
-    "source": "standard_a_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r12_e02_discard3_or_damage_x",
-    "difficulty": "normal",
-    "row": 12,
-    "text": "Cada jugador descarta 3 cartas de su mano o recibe {X} de daño.",
-    "tags": ["discard", "damage", "choice"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r12_e03_tap_all_in_play_yours",
-    "difficulty": "normal",
-    "row": 12,
-    "text": "Los Inquisidores atacan: agota (tapa) todas las cartas que tengas en juego.",
-    "tags": ["tap", "board_control"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r12_e04_mill_top_3",
-    "difficulty": "normal",
-    "row": 12,
-    "text": "Descarta las 3 cartas superiores de tu mazo.",
-    "tags": ["mill", "deck"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r13_e01_damage_x_all_and_discard2",
-    "difficulty": "normal",
-    "row": 13,
-    "text": "Cada jugador recibe {X} de daño y descarta 2 cartas de su mano.",
-    "tags": ["damage", "discard"],
-    "source": "standard_a_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r13_e02_sacrifice_in_play_or_big_damage",
-    "difficulty": "normal",
-    "row": 13,
-    "text": "Elige: descarta 1 carta que tengas en juego o recibe {X} de daño.",
-    "tags": ["board_control", "damage", "choice"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r13_e03_lock_two_metals_for_two_turns",
-    "difficulty": "normal",
-    "row": 13,
-    "text": "Elige hasta 2 metales que hayas quemado en este turno. No podrás quemar esos metales durante tus próximos 2 turnos.",
-    "tags": ["metals", "restriction"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r13_e04_riots_all_mill_3",
-    "difficulty": "normal",
-    "row": 13,
-    "text": "Graves disturbios en la ciudad: cada jugador descarta las 3 cartas superiores de su mazo.",
-    "tags": ["mill", "deck"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r14_e01_damage_x_lowest_and_highest_hp",
-    "difficulty": "normal",
-    "row": 14,
-    "text": "El jugador con menos vida y el jugador con más vida reciben cada uno {X} de daño.",
-    "tags": ["damage", "targeted"],
-    "source": "custom",
-    "weight": 2
-  },
-  {
-    "id": "normal_r14_e02_permanent_lose_one_metal_used_this_turn",
-    "difficulty": "normal",
-    "row": 14,
-    "text": "El Lord Legislador marca tu espíritu: elige 1 metal que hayas quemado este turno. No podrás volver a quemar ese metal durante toda la partida.",
-    "tags": ["metals", "permanent_penalty"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 1
-  },
-  {
-    "id": "normal_r14_e03_tap_all_in_play_and_cant_untap_next_turn",
-    "difficulty": "normal",
-    "row": 14,
-    "text": "Agota (tapa) todas las cartas que tengas en juego. No se enderezarán al inicio de tu próximo turno.",
-    "tags": ["tap", "board_control", "tempo"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 2
-  },
-  {
-    "id": "normal_r14_e04_discard_hand_to_draw2_or_damage_x",
-    "difficulty": "normal",
-    "row": 14,
-    "text": "Elige: descarta toda tu mano y roba 2 cartas, o recibe {X} de daño.",
-    "tags": ["discard", "draw", "damage", "choice"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r15_e01_big_damage_x_all",
-    "difficulty": "normal",
-    "row": 15,
-    "text": "La voluntad del Lord Legislador aplasta toda resistencia: cada jugador recibe {X} de daño.",
-    "tags": ["damage"],
-    "source": "standard_a_like",
-    "weight": 2
-  },
-  {
-    "id": "normal_r15_e02_permanent_lose_one_metal_from_reserve",
-    "difficulty": "normal",
-    "row": 15,
-    "text": "El Lord Legislador ha extirpado tu capacidad de quemar un metal: elige 1 metal de tu reserva. No podrás volver a quemar ese metal durante toda la partida.",
-    "tags": ["metals", "permanent_penalty"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 1
-  },
-  {
-    "id": "normal_r15_e03_discard2_in_play_or_damage_x",
-    "difficulty": "normal",
-    "row": 15,
-    "text": "Elige: descarta 2 cartas que tengas en juego o recibe {X} de daño.",
-    "tags": ["board_control", "damage", "choice"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r15_e04_mist_eruption_shuffle_all_discard_into_deck",
-    "difficulty": "normal",
-    "row": 15,
-    "text": "Erupción de brumas: baraja toda tu pila de descarte y colócala encima de tu mazo.",
-    "tags": ["deck", "discard_pile"],
-    "source": "custom",
-    "weight": 1
-  },
-
-  {
-    "id": "normal_r16_e01_massive_damage_x_all",
-    "difficulty": "normal",
-    "row": 16,
-    "text": "Dominio absoluto: cada jugador recibe {X} de daño.",
-    "tags": ["damage", "finale"],
-    "source": "custom",
-    "weight": 2
-  },
-  {
-    "id": "normal_r16_e02_permanent_lose_one_metal_used_this_round",
-    "difficulty": "normal",
-    "row": 16,
-    "text": "El Lord Legislador arranca parte de tu alma: elige 1 metal que hayas quemado en esta ronda. No podrás volver a quemar ese metal durante toda la partida.",
-    "tags": ["metals", "permanent_penalty"],
-    "source": "custom",
-    "weight": 1,
-    "maxTimesPerGame": 1
-  },
-  {
-    "id": "normal_r16_e03_everyone_discards_hand",
-    "difficulty": "normal",
-    "row": 16,
-    "text": "Todos los jugadores descartan su mano.",
-    "tags": ["discard", "hand", "finale"],
-    "source": "custom",
-    "weight": 1
-  },
-  {
-    "id": "normal_r16_e04_all_tap_and_mill2",
-    "difficulty": "normal",
-    "row": 16,
-    "text": "Las brumas consumen la ciudad: agota (tapa) todas las cartas que tengas en juego y descarta las 2 cartas superiores de tu mazo.",
-    "tags": ["tap", "mill", "board_control", "finale"],
-    "source": "custom",
-    "weight": 1
-  }
-]
+     {
+      "id": "normal_r01_e01_damage_all_3",
+      "text": "Cada jugador sufre 3 de daño.",
+      "tags": [
+        "damage",
+        "mild"
+      ],
+      "source": "intro_like",
+      "weight": 1,
+      "maxTimesPerGame": 1,
+      "dominance": 1
+    },
+    {
+      "id": "normal_r01_e01_damage_all_1",
+      "text": "Cada jugador debe avivar un metal o sufrir 3 de daño.",
+      "tags": [
+        "damage",
+        "mild"
+      ],
+      "source": "intro_like",
+      "weight": 2,
+      "maxTimesPerGame": 1,
+      "dominance": 1
+    },
+    {
+      "id": "normal_r01_e02_discard_1",
+      "text": "El Lord Legislador exige tributo: cada jugador descarta 1 carta de su mano.",
+      "tags": [
+        "discard",
+        "hand"
+      ],
+      "source": "intro_like",
+      "weight": 1,
+      "dominance": 1
+    },
+    {
+      "id": "normal_r02_e01_damage_or_discard",
+      "text": "Cada jugador recibe {X} de daño o descarta 1 carta de su mano.",
+      "tags": [
+        "damage",
+        "discard",
+        "choice"
+      ],
+      "source": "intro_like",
+      "maxTimesPerGame": 1,
+      "weight": 2,
+      "dominance": 0
+    },
+    {
+      "id": "normal_r02_e02_discard_highest_cost",
+      "text": "Descarta la carta de mayor costo que tengas en la mano.",
+      "tags": [
+        "discard",
+        "hand"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "maxTimesPerGame" : 1,
+      "dominance": 2
+    },
+    {
+      "id": "normal_r02_e02_discard_highest_cost",
+      "text": "Todos los Aliados en juego con más de 2 de escudo son derrotados.",
+      "tags": [
+        "discard",
+        "hand"
+      ],
+      "source": "custom",
+      "weight": 2,
+      "maxTimesPerGame" : 1,
+      "dominance": 2
+    },
+    {
+      "id": "normal_r02_e04_mill_top_1",
+      "text": "el jugador con mas Vida sufre 6 de daño.",
+      "tags": [
+        "damage",
+        "targeted"
+      ],
+      "source": "intro_like",
+      "weight": 3,
+      "dominance": 2
+    },
+    {
+      "id": "normal_r03_e01_damage_x_all",
+      "text": "Cada jugador recibe {X} de daño.",
+      "tags": [
+        "damage"
+      ],
+      "source": "standard_a_like",
+      "weight": 2,
+      "dominance": 3
+    },
+      {
+      "id": "normal_r03_e01_damage_x_all",
+      "text": "El jugador con menos puntos de Vida sufre 5 de daño.",
+      "tags": [
+        "damage"
+      ],
+      "source": "standard_a_like",
+      "weight": 2,
+      "dominance": 3
+    },
+    {
+      "id": "normal_r01_e04_tap_in_play",
+      "text": "Los Obligadores vigilan la ciudad: descarta hasta 2 cartas de Aliados que tengas en juego.",
+      "tags": [
+        "tap",
+        "board_control"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 3
+    },
+    {
+      "id": "normal_r03_e02_discard_top_each",
+      "text": "Cada jugador descarta puede sufrir 4 puntos de Vida. Si lo hace, roba 2 cartas.",
+      "tags": [
+        "damage",
+        "deck"
+      ],
+      "source": "standard_a_like",
+      "weight": 1,
+      "dominance": 3
+    },
+    {
+      "id": "normal_r03_e03_cant_burn_metal_next_turn",
+      "text": "Elige 1 metal que hayas quemado este turno. Debes avivar ese metal.",
+      "tags": [
+        "metals",
+        "restriction"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 3
+    },
+    {
+      "id": "normal_r04_e01_damage_x_or_discard",
+      "text": "Cada jugador recibe 2*{X} de daño o descarta 2 cartas de su mano.",
+      "tags": [
+        "damage",
+        "discard",
+        "choice"
+      ],
+      "source": "standard_a_like",
+      "maxTimesPerGame": 1,
+      "weight": 1,
+      "dominance": 3
+    },
+    {
+      "id": "normal_r04_e03_tap_all_in_play_one_player",
+      "text": "El jugador con más cartas de aliado en juego debe descartar hasta 2 de esas cartas.",
+      "tags": [
+        "tap",
+        "board_control"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 3
+    },
+    {
+      "id": "normal_r05_e01_damage_x_all",
+      "text": "Cada jugador recibe {X} de daño.",
+      "tags": [
+        "damage"
+      ],
+      "source": "standard_a_like",
+      "weight": 2,
+      "dominance": 4
+    },
+    {
+      "id": "normal_r05_e02_discard_2_or_damage",
+      "text": "Cada jugador descarta 2 cartas de su mano o recibe {X} de daño.",
+      "tags": [
+        "discard",
+        "damage",
+        "choice"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 4
+    },
+    {
+      "id": "normal_r05_e02_discard_2_or_damage",
+      "text": "El jugadir con más puntos de Vida sufre 10 de daño.",
+      "tags": [
+        "discard",
+        "damage"
+      ],
+      "source": "intro_like",
+      "weight": 3,
+      "maxTimesPerGame": 1,
+      "dominance": 4
+    },
+    {
+      "id": "normal_r05_e03_mill_top_2",
+      "text": "Descarta las 2 cartas superiores de tu mazo.",
+      "tags": [
+        "mill",
+        "deck"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 4
+    },
+    {
+      "id": "normal_r05_e04_tap_two_in_play",
+      "text": "Los Inquisidores patrullan Luthadel: cada jugador debe descartar hasta 2 cartas de Aliados que tengas en juego.",
+      "tags": [
+        "tap",
+        "board_control"
+      ],
+      "source": "custom",
+      "weight": 2,
+      "maxTimesPerGame": 1,
+      "dominance": 4
+    },
+    {
+      "id": "normal_r06_e01_damage_x_lowest_hp",
+      "text": "Los jugadores sufren tantos {X} de daño colectivamente como el número de jugadores multiplicadp por 5.",
+      "tags": [
+        "damage",
+        "targeted"
+      ],
+      "source": "intro_like",
+      "weight": 2,
+      "maxTimesPerGame": 1,
+      "dominance": 5
+    },
+    {
+      "id": "normal_r06_e02_flare_all_metals_this_turn",
+      "text": "Debes avivar todos los metales que hayas quemado este turno.",
+      "tags": [
+        "metals",
+        "flare"
+      ],
+      "source": "custom",
+      "weight": 2,
+      "maxTimesPerGame" : 1,
+      "dominance": 5
+    },
+    {
+      "id": "normal_r06_e03_damage_per_metal_burned",
+      "text": "Recibes 3 de daño por cada metal distinto que hayas quemado este turno (máximo {X} de daño).",
+      "tags": [
+        "metals",
+        "damage"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 5
+    },
+    {
+      "id": "normal_r07_e01_damage_x_all_then_draw1",
+      "text": "Cada jugador recibe {X} de daño. Luego, cada jugador roba 1 carta.",
+      "tags": [
+        "damage",
+        "draw"
+      ],
+      "source": "custom",
+      "weight": 2,
+      "dominance": 6
+    },
+    {
+      "id": "normal_r06_e01_damage_x_all_then_draw1",
+      "text": "Cada jugador sufre 6 y, a continuación, obtiene 1 de Atium.",
+      "tags": [
+        "damage",
+        "draw"
+      ],
+      "source": "intro_like",
+      "weight": 2,
+      "dominance": 6
+    },
+    {
+      "id": "normal_r07_e02_lock_one_metal_next_turn",
+      "text": "El Lord Regitrados te corrompe: Elige 1 metal de tu reserva. No podrás quemar ese metal hasta el final del juego.",
+      "tags": [
+        "metals",
+        "restriction"
+      ],
+      "source": "custom",
+      "weight": 2,
+      "maxTimesPerGame": 1,
+      "dominance": 6
+    },
+    {
+      "id": "normal_r07_e04_mist_confusion_reorder_top3",
+      "text": "Las brumas confunden tus pasos: mira las 3 primeras cartas de tu mazo, descarta 1 y elimina las dos restantes.",
+      "tags": [
+        "deck",
+        "selection"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 6
+    },
+    {
+      "id": "normal_r08_e01_damage_x_all_discard1",
+      "text": "Cada jugador recibe {X} de daño y descarta 1 carta de su mano.",
+      "tags": [
+        "damage",
+        "discard"
+      ],
+      "source": "standard_a_like",
+      "weight": 2,
+      "maxTimesPerGame": 1,
+      "dominance": 6
+    },
+    {
+      "id": "normal_r08_e02_tap_all_in_play_highest_hp",
+      "text": "El jugador con más vida debe eliminar 1 de sus aliados que tenag.",
+      "tags": [
+        "tap",
+        "board_control"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "maxTimesPerGame": 1,
+      "dominance": 6
+    },
+    {
+      "id": "normal_r08_e03_skaa_riots_all_mill_2",
+      "text": "Disturbios entre los skaa: cada jugador descarta las 3 cartas superiores de su mazo.",
+      "tags": [
+        "mill",
+        "deck"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 6
+    },
+    {
+      "id": "normal_r08_e04_lose_metal_this_game_soft",
+      "text": "Elige 1 metal que hayas quemado en esta ronda. No podrás quemar hasta el final del juego.",
+      "tags": [
+        "metals",
+        "restriction"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 6
+    },
+    {
+      "id": "normal_r09_e01_damage_x_all_and_mill1",
+      "text": "Cada jugador recibe {X} de daño y descarta la carta superior de su mazo.",
+      "tags": [
+        "damage",
+        "mill"
+      ],
+      "source": "standard_a_like",
+      "weight": 2,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r09_e02_discard2_or_damage_x",
+      "text": "Cada jugador descarta 2 cartas de su mano o recibe {X} de daño.",
+      "tags": [
+        "discard",
+        "damage",
+        "choice"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r09_e03_tap_all_metals_in_play",
+      "text": "Las reservas metálicas se agotan: agota (tapa) todas las cartas relacionadas con metales que tengas en juego.",
+      "tags": [
+        "tap",
+        "metals",
+        "board_control"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r09_e04_look3_keep1_mill2",
+      "text": "Mira las 3 primeras cartas de tu mazo. Pon 1 en tu mano y descarta las otras 2.",
+      "tags": [
+        "deck",
+        "selection",
+        "mill"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r10_e01_damage_x_lowest_hp_and_tap",
+      "text": "El jugador con menos vida recibe {X} de daño y debe agotar (tapar) 1 carta que tenga en juego.",
+      "tags": [
+        "damage",
+        "tap",
+        "targeted"
+      ],
+      "source": "custom",
+      "weight": 2,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r10_e02_flare_all_metals_this_turn_hard",
+      "text": "Debes avivar (flarear) todos los metales que hayas quemado en este turno.",
+      "tags": [
+        "metals",
+        "flare"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r10_e03_damage_per_card_in_play",
+      "text": "Recibes 1 de daño por cada 2 cartas que tengas en juego (redondea hacia arriba), hasta un máximo de {X} de daño.",
+      "tags": [
+        "damage",
+        "board_control"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r10_e04_each_discards_played_this_turn",
+      "text": "Cada jugador elige 1 carta que haya jugado este turno y la descarta.",
+      "tags": [
+        "discard",
+        "tempo"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r11_e01_damage_x_all_and_discard1",
+      "text": "Cada jugador recibe {X} de daño y descarta 1 carta de su mano.",
+      "tags": [
+        "damage",
+        "discard"
+      ],
+      "source": "standard_a_like",
+      "weight": 2,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r11_e02_skaa_spies_reveal_hand",
+      "text": "Espías skaa revelan tus planes: muestra tu mano y descarta 2 carta de tu elección.",
+      "tags": [
+        "discard",
+        "info"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r11_e03_lock_metal_for_two_turns",
+      "text": "Elige 1 metal que hayas quemado en este turno. No podrás usar ese metal hasta el final del juego. Todavía puedes usar Atium para quemar ese metal",
+      "tags": [
+        "metals",
+        "restriction"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r11_e04_mist_storm_shuffle_discard_into_deck",
+      "text": "Tormenta de brumas: baraja tu pila de descarte con tu mazo",
+      "tags": [
+        "deck",
+        "discard_pile"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "maxTimesPerGame": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r12_e01_damage_x_all_strong",
+      "text": "El poder del Lord Legislador crece: cada jugador recibe {X} de daño.",
+      "tags": [
+        "damage"
+      ],
+      "source": "standard_a_like",
+      "weight": 2,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r12_e02_discard3_or_damage_x",
+      "text": "Cada jugador descarta 3 cartas de su mano o recibe {X} de daño.",
+      "tags": [
+        "discard",
+        "damage",
+        "choice"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "maxTimesPerGame": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r12_e03_tap_all_in_play_yours",
+      "text": "Los Inquisidores atacan: agota (tapa) todas las cartas que tengas en juego.",
+      "tags": [
+        "tap",
+        "board_control"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r12_e04_mill_top_3",
+      "text": "Descarta las 3 cartas superiores de tu mazo.",
+      "tags": [
+        "mill",
+        "deck"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 7
+    },
+    {
+      "id": "normal_r13_e01_damage_x_all_and_discard2",
+      "text": "Cada jugador recibe {X} de daño y descarta 2 cartas de su mano.",
+      "tags": [
+        "damage",
+        "discard"
+      ],
+      "source": "standard_a_like",
+      "weight": 2,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r13_e02_sacrifice_in_play_or_big_damage",
+      "text": "Elige: descarta 1 carta que tengas en juego o recibe {X} de daño.",
+      "tags": [
+        "board_control",
+        "damage",
+        "choice"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r13_e03_lock_two_metals_for_two_turns",
+      "text": "Elige hasta 2 metales que hayas quemado en este turno. No podrás quemar esos metales durante tus próximos 2 turnos.",
+      "tags": [
+        "metals",
+        "restriction"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r13_e04_riots_all_mill_3",
+      "text": "Graves disturbios en la ciudad: cada jugador descarta las 3 cartas superiores de su mazo.",
+      "tags": [
+        "mill",
+        "deck"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r14_e01_damage_x_lowest_and_highest_hp",
+      "text": "El jugador con menos vida y el jugador con más vida reciben cada uno {X} de daño.",
+      "tags": [
+        "damage",
+        "targeted"
+      ],
+      "source": "custom",
+      "weight": 2,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r14_e02_permanent_lose_one_metal_used_this_turn",
+      "text": "El Lord Legislador marca tu espíritu: elige 1 metal que hayas quemado este turno. No podrás volver a quemar ese metal durante toda la partida.",
+      "tags": [
+        "metals",
+        "permanent_penalty"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r14_e03_tap_all_in_play_and_cant_untap_next_turn",
+      "text": "Elimina todas las cartas de Aliado que tengas en juego.",
+      "tags": [
+        "tap",
+        "board_control",
+        "tempo"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "maxTimesPerGame": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r14_e04_discard_hand_to_draw2_or_damage_x",
+      "text": "Elige: descarta toda tu mano y roba 2 cartas, o recibe {X} de daño.",
+      "tags": [
+        "discard",
+        "draw",
+        "damage",
+        "choice"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r15_e01_big_damage_x_all",
+      "text": "La voluntad del Lord Legislador aplasta toda resistencia: cada jugador recibe {X} de daño.",
+      "tags": [
+        "damage"
+      ],
+      "source": "standard_a_like",
+      "weight": 2,
+      "maxTimesPerGame": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r15_e02_permanent_lose_one_metal_from_reserve",
+      "text": "El Lord Legislador ha extirpado tu capacidad de quemar un metal: elige 1 metal de tu reserva. No podrás volver a quemar ese metal durante toda la partida.",
+      "tags": [
+        "metals",
+        "permanent_penalty"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r15_e03_discard2_in_play_or_damage_x",
+      "text": "Elige: descarta 2 cartas que tengas en juego o recibe {X} de daño.",
+      "tags": [
+        "board_control",
+        "damage",
+        "choice"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r15_e04_mist_eruption_shuffle_all_discard_into_deck",
+      "text": "Erupción de brumas: baraja toda tu pila de descarte y colócala encima de tu mazo.",
+      "tags": [
+        "deck",
+        "discard_pile"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "maxTimesPerGame": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r16_e01_massive_damage_x_all",
+      "text": "Dominio absoluto: cada jugador recibe {X} de daño.",
+      "tags": [
+        "damage",
+        "finale"
+      ],
+      "source": "custom",
+      "weight": 2,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r16_e02_permanent_lose_one_metal_used_this_round",
+      "text": "El Lord Legislador arranca parte de tu alma: elige 2 metal que hayas quemado en esta ronda. No podrás volver a quemar ese metal durante toda la partida.",
+      "tags": [
+        "metals",
+        "permanent_penalty"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "maxTimesPerGame": 1,
+      "dominance": 8
+    },
+    {
+      "id": "normal_r16_e03_everyone_discards_hand",
+      "text": "Todos los jugadores descartan su mano.",
+      "tags": [
+        "discard",
+        "hand",
+        "finale"
+      ],
+      "source": "custom",
+      "weight": 1,
+      "maxTimesPerGame": 1,
+      "dominance": 8
+    },
+    {
+      "id": "generic_event_01",
+      "text": "El viento susurra secretos: roba 1 carta adicional en tu próximo turno.",
+      "tags": [
+        "generic",
+        "draw"
+      ],
+      "source": "custom",
+      "maxTimesPerGame": 1,
+      "weight": 1
+    }
+  ],
+  "difficulties": [
+    {
+      "id": "normal",
+      "name": "Normal",
+      "xCurve": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ]
+    }
+  ]
 }

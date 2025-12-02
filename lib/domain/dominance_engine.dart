@@ -16,9 +16,19 @@ class DominanceEngine {
     final newRow = state.currentRow + 1;
     final x = state.difficulty.xCurve[newRow - 1];
 
-    final candidates = config.events.where((e) {
-      return e.difficulty == state.difficulty.id && e.row == newRow;
-    }).toList();
+    // Buscar eventos disponibles para este valor X
+    var candidates = config.events.where((e) => e.isAvailableForX(x)).toList();
+    
+    // Si no hay eventos específicos para X, buscar hacia atrás (X-1, X-2, etc.)
+    if (candidates.where((e) => e.dominance == x).isEmpty) {
+      for (int fallbackX = x - 1; fallbackX >= 1; fallbackX--) {
+        final fallbackEvents = config.events.where((e) => e.dominance == fallbackX).toList();
+        if (fallbackEvents.isNotEmpty) {
+          candidates.addAll(fallbackEvents);
+          break;
+        }
+      }
+    }
 
     if (candidates.isEmpty) {
       final newState = state.copyWith(currentRow: newRow);
