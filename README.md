@@ -1,6 +1,6 @@
 # 🌟 Mistborn Dominance Tracker
 
-Una aplicación companion para el juego de mesa **Mistborn: House War** que te ayuda a gestionar el Dominance Track y los eventos dinámicos durante tus partidas.
+Una aplicación companion para el juego de mesa **Mistborn: The Deckbuilding Game** que te ayuda a gestionar el Dominance Track y los eventos dinámicos durante tus partidas.
 
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=flat&logo=Flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=flat&logo=dart&logoColor=white)
