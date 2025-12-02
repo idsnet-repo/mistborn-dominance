@@ -116,7 +116,7 @@
     },
     {
       "id": "normal_r03_e02_discard_top_each",
-      "text": "Cada jugador descarta puede sufrir 4 puntos de Vida. Si lo hace, roba 2 cartas.",
+      "text": "Cada jugador puede sufrir 4 puntos de Vida. Si lo hace, roba 2 cartas.",
       "tags": [
         "damage",
         "deck"

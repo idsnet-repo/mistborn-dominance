@@ -261,12 +261,16 @@ class _HomePageState extends State<HomePage> {
             ),
             IconButton(
               onPressed: () async {
+                final currentConfigId = await ConfigManager.getActiveConfigId();
                 await Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const ConfigPage()),
                 );
-                // Recargar configuración después de volver de la página de config
-                _loadConfig();
+                // Solo recargar si cambió la configuración
+                final newConfigId = await ConfigManager.getActiveConfigId();
+                if (currentConfigId != newConfigId) {
+                  _loadConfig();
+                }
               },
               icon: const Icon(
                 Icons.settings,
