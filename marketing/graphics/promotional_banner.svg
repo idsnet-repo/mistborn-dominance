@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="300" viewBox="0 0 1024 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color:#2C2C2C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D0D0D;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFD700" />
+      <stop offset="100%" style="stop-color:#FFB300" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1024" height="300" fill="url(#bg)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="50" r="30" fill="#B71C1C" opacity="0.3"/>
+  <circle cx="974" cy="250" r="40" fill="#FFB300" opacity="0.2"/>
+  
+  <!-- Main text -->
+  <text x="512" y="120" font-family="Arial Black, sans-serif" font-size="48" font-weight="bold" 
+        text-anchor="middle" fill="url(#gold)">
+    MISTBORN DOMINANCE TRACKER
+  </text>
+  
+  <text x="512" y="160" font-family="Arial, sans-serif" font-size="24" 
+        text-anchor="middle" fill="#FFFFFF" opacity="0.9">
+    Companion App for the Deckbuilding Game
+  </text>
+  
+  <text x="512" y="200" font-family="Arial, sans-serif" font-size="18" 
+        text-anchor="middle" fill="#FFB300">
+    Track Events • Manage Dominance • Enhance Gameplay
+  </text>
+  
+  <text x="512" y="250" font-family="Arial, sans-serif" font-size="16" 
+        text-anchor="middle" fill="#FFFFFF" opacity="0.7">
+    🎮 Free • Open Source • Cross Platform
+  </text>
+</svg>
